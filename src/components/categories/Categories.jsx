@@ -1,32 +1,60 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCategories } from "../../store/features/categoriesSlice";
 
-import fertilizer from "../../assets/fertilizer.jpg";
-import planting from "../../assets/planting.jpg";
-import protection from "../../assets/protection.jpg";
-import tools from "../../assets/tools.jpg";
-import "./Categories.css";
+import "../../App.scss";
+import Category from "./Category";
+import { NavLink } from "react-router-dom"
 
 export default function Categories() {
+  const dispatch = useDispatch();
+  const { categories, loading, error } = useSelector(
+    (state) => state.categories
+  );
+
+  useEffect(() => {
+    dispatch(fetchCategories());
+  }, [dispatch]);
+
+  // функция, которая выбирает 4 случайных категории
+  const getRandomCategories = () => {
+    console.log(categories);
+    return categories.slice(0, 4);
+   
+  };
+  const randomCategories = getRandomCategories();
+
+  if (error) return <p>Error: {error.message}</p>;
   return (
-    <div className="categories">
-      <div className="category-card">
-        <img src={fertilizer} alt="Fertilizer" />
-        <p>Fertilizer</p>
-      </div>
+   
+   
+    <div className='container'>
+      <div className='section'>
+        <div className='section__title'><h2>Categories</h2>
+          <div className="section__linie-wrapper">
+            <div className="section__linie"></div>
+            <NavLink to="/categories">
+              <div className="section__btn">All categories</div>
+            </NavLink>
+          </div>
+        </div>
 
-      <div className="category-card">
-        <img src={planting} alt="Planting material" />
-        <p>Protective products and septic tanks</p>
-      </div>
+        <div className="section__list">
+          {randomCategories.length
+          ? randomCategories.map((cat) => {
+              return <Category category={cat} key={cat.id} />;
+            })
+          : loading}
+        </div>
 
-      <div className="category-card">
-        <img src={protection} alt="Plant protection" />
-        <p>Planting material	</p>
-      </div>
-
-      <div className="category-card">
-        <img src={tools} alt="Tools and equipment" />
-        <p>Tools and equipment</p>
+        <div className="section__linie-wrapper-mob">
+          <NavLink to="/categories">
+            <div className="section__btn-mob">All categories</div>
+          </NavLink>
+        </div>
+        
       </div>
     </div>
+
   );
 }
