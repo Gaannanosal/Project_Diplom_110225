@@ -1,0 +1,91 @@
+.discount {
+  border-radius: 10px;
+  background: linear-gradient(90deg, #828e3a 0%, #55610b 100%);
+  color: #fff;
+  margin: 0 24px;
+  padding-top: 32px;
+}
+
+.discount__inner {
+ 
+  margin: 0 auto;
+  padding: 0 16px;
+ 
+}
+
+.discount__title {
+
+  text-align: center;
+  font-size: 64px;
+ line-height: 110%;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+/* Контейнер с картинкой и формой */
+.discount__content {
+  display: flex;
+
+  gap: 24px;
+  justify-content: space-between;
+}
+
+
+
+.discount__image {
+ 
+  width: 60%;
+ 
+}
+
+/* Форма */
+.discount__form {
+  display: grid;
+  gap: 16px;
+  max-width: 516px;
+ 
+  width: 100%;
+  padding: 24px 0;
+  background: transparent;
+}
+
+.discount__input {
+  width: 100%;
+  box-sizing: border-box;
+   font-size: 20px;
+  line-height: 130%;
+  padding: 16px 32px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 6px;
+  background: transparent;
+  color: #fff;
+
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.85);
+  }
+}
+
+.discount__btn {
+  padding: 16px 32px;
+  border-radius: 6px;
+  margin-top: 16px;
+  border: 0;
+  background: #fff;
+  color: #2f4c1b;
+  font-weight: 700;
+  cursor: pointer;
+   font-size: 20px;
+    line-height: 130%;
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+  .discount__content {
+    grid-template-columns: 1fr;
+  }
+
+  .discount__form {
+    max-width: 100%;
+  }
+}
