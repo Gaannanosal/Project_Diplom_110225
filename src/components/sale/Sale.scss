@@ -1,0 +1,14 @@
+/* Sale.scss */
+.sale {
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+.sale-header {
+  display: flex; justify-content: space-between; align-items: center;
+  height: 70px; margin-bottom: 30px;
+}
+.sale-title { font-size: 32px; font-weight: 700; }
+.sale-btn { background: transparent; border: none; font-size: 16px; color: #8e8e8e; cursor: pointer; }
+.line { height: 2px; background: #e5e7eb; }
