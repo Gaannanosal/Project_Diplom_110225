@@ -1,7 +1,7 @@
 import "./Categories.scss";
 
 const Category = ({ category }) => {
-  console.log(category);
+
 
   return (
   <div className="catedoryCard">
