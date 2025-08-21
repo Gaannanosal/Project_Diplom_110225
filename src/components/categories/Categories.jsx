@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCategories } from "../../store/features/categoriesSlice";
 
-import "../../App.scss";
+import "../styles/Sections.scss";
 import Category from "./Category";
 import { NavLink } from "react-router-dom"
 
@@ -18,8 +18,9 @@ export default function Categories() {
 
   // функция, которая выбирает 4 случайных категории
   const getRandomCategories = () => {
-    console.log(categories);
-    return categories.slice(0, 4);
+     return [...categories]
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 4)
    
   };
   const randomCategories = getRandomCategories();
