@@ -15,19 +15,19 @@ const savedForm = JSON.parse(localStorage.getItem("cart-form-discount")) || {
 
 const DiscountForm = () => {
   const dispatch = useDispatch();
-  const [isDisabledSend, setIsDisabledSend] = useState(false); // временно отключает кнопку отправки после одного отправления.
+  const [isDisabledSend, setIsDisabledSend] = useState(false);
   const { message, loading, success, error } = useSelector(
     (state) => state.discount
   );
 
   const {
-    register, // связывает инпуты с системой валидации
+    register, 
     formState: { errors },
     handleSubmit,
-    watch, // отслеживает изменения полей формы.
+    watch, 
     reset,
   } = useForm({
-    mode: "onBlur", // валидация срабатывает при потере фокуса.
+    mode: "onBlur", 
     defaultValues: savedForm,
   });
 
@@ -35,23 +35,22 @@ const DiscountForm = () => {
     const subscription = watch((value) => {
       localStorage.setItem("cart-form-discount", JSON.stringify(value));
     });
-    return () => subscription.unsubscribe(); // функция очистки
-  }, [watch]); // следим за каждым изменением формы
-
+    return () => subscription.unsubscribe(); 
+  }, [watch]); 
   const onSubmit = (data) => {
-    // вызывается при успешной валидации
+    
     reset({
       name: "",
       phone: "",
       email: "",
     });
-    setIsDisabledSend(true); // блокирует кнопку
-    dispatch(sendDiscountRequest(data)); // oтправляет данные на сервер
+    setIsDisabledSend(true); 
+    dispatch(sendDiscountRequest(data));
   };
 
   const formValidationErrors = Object.values(errors).map((err) => err.message);
   const hasFormValidationErrors = formValidationErrors.length > 0;
-  // собираем массив сообщений об ошибках и определяем, есть ли вообще ошибки
+
 
   return (
     <div className="discount">

@@ -1,4 +1,3 @@
-
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useTheme } from "../../theme/ThemeContext";
@@ -18,11 +17,12 @@ export default function Navi() {
     <>
       <div className="navi">
         <div className="navi__container">
-        
           <div className="navi__left">
             <img className="navi__container__logo" src={logo} alt="logo" />
             <div
-              className={`navi__container__mode ${theme === "dark" ? "dark" : "light"}`}
+              className={`navi__container__mode ${
+                theme === "dark" ? "dark" : "light"
+              }`}
               onClick={toggleTheme}
             >
               <div className="navi__container__mode-boll" />
@@ -31,19 +31,26 @@ export default function Navi() {
             </div>
           </div>
 
-         
           <div className="navi__center">
             <div className="navi__promo">1 day discount!</div>
             <nav className="navi__menu">
               <ul className="navi__menu-list">
-                <li className="navi__menu-item"><NavLink to="/">Main Page</NavLink></li>
-                <li className="navi__menu-item"><NavLink to="/categories">Categories</NavLink></li>
-                <li className="navi__menu-item"><NavLink to="/products">All products</NavLink></li>
-                <li className="navi__menu-item"><NavLink to="/sales">All sales</NavLink></li>
+                <li className="navi__menu-item">
+                  <NavLink to="/">Main Page</NavLink>
+                </li>
+                <li className="navi__menu-item">
+                  <NavLink to="/categories">Categories</NavLink>
+                </li>
+                <li className="navi__menu-item">
+                  <NavLink to="/products">All products</NavLink>
+                </li>
+                <li className="navi__menu-item">
+                  <NavLink to="/sales">All sales</NavLink>
+                </li>
               </ul>
             </nav>
           </div>
-            <div className="navi__right">
+          <div className="navi__right">
             <span className="navi__right-icon" title="Favorites">
               <NavLink to="/products/likedProducts">
                 <HiMiniHeart />
@@ -60,7 +67,7 @@ export default function Navi() {
           </div>
         </div>
       </div>
-  <div className="navi-margin" />
+      <div className="navi-margin" />
     </>
   );
 }
