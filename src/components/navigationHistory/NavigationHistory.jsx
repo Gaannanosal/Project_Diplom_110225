@@ -1,3 +1,5 @@
-const NavigationHistory = () => <dev />;
+const NavigationHistory = () => 
+{return
+<div></div>;}
 
 export default NavigationHistory;

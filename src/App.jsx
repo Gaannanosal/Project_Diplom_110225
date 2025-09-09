@@ -3,12 +3,14 @@ import { Routes, Route, Outlet } from "react-router-dom";
 
 import Navi from "./components/header/Navi.jsx";
 import Header from "./components/header/Header.jsx";
- import Footer from "./components/Footer/Footer.jsx";
+import Footer from "./components/Footer/Footer.jsx";
 import Categories from "./components/categories/Categories.jsx";
 import DiscountForm from "./components/diskountForm/DiskountForm.jsx";
 import Sale from "./components/sale/Sale.jsx";
-import AllSales from "./components/page/AllSales.jsx";
-
+import AllSales from "./page/AllSales.jsx";
+import AllProducts from "./page/AllProducts.jsx";
+import CategoryProduct from "./page/CategoryProduct.jsx";
+import AllCategories from "./page/Categories.jsx";
 
 function Layout() {
   return (
@@ -19,7 +21,6 @@ function Layout() {
     </div>
   );
 }
-
 
 function HomePage() {
   return (
@@ -38,7 +39,12 @@ export default function App() {
       <Route element={<Layout />}>
         <Route path="/" element={<HomePage />} />
         <Route path="/sales" element={<AllSales />} />
-
+        <Route path="/products" element={<AllProducts />} />
+        <Route path="/categories" element={<AllCategories />} />
+        <Route
+          path="categoriesProduct/:categoryId"
+          element={<CategoryProduct />}
+        />
         <Route
           path="*"
           element={

@@ -1,12 +1,12 @@
 import { useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import ProductCard from "../products/ProductCard.jsx";
-import "../styles/Sections.scss";
-import NavigationHistory from "../navigationHistory/NavigationHistory.jsx";
-import ProductsFilter from "../ProductsFilter/ProductsFilter.jsx";
-import Sceleton from "../sceleton/Sceleton.jsx";
-import { fetchProducts } from "../../store/features/productsSlice.js";
+import ProductCard from "../components/products/ProductCard.jsx";
+import "../components/styles/Sections.scss";
+import NavigationHistory from "../components/navigationHistory/NavigationHistory.jsx";
+import ProductsFilter from "../components/ProductsFilter/ProductsFilter.jsx";
+import Sceleton from "../components/sceleton/Sceleton.jsx";
+import { fetchProducts } from "../store/features/productsSlice.js";
 
 export default function AllSales() {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ export default function AllSales() {
   }, [dispatch, products]);
 
   const discounted = useMemo(
-    () => (products || []).filter((p) => p.discont_price != null),
+    () => (products || []).filter((p) => p.discont_price !== null),
     [products]
   );
   const [list, setList] = useState(discounted);

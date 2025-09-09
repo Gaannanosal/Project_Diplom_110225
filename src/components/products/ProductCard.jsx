@@ -4,14 +4,15 @@ import { getLikedProducts } from "../../store/features/productsSlice";
 import { HiOutlineHeart, HiMiniHeart } from "react-icons/hi2";
 import { Link } from "react-router-dom";
 import { HiShoppingBag, HiOutlineShoppingBag } from "react-icons/hi";
-
+import { addProductsToCart } from "../../store/features/cartSlice";
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
 
   const { likedProducts } = useSelector((state) => state.products);
-  const cartItem = useSelector((state) => state.cart.cart);
+  const cartItem = useSelector((state) => state.cart?.cart);
   const isLiked = likedProducts.includes(product.id);
-  // const isInCart = cartItem.find(item => item.id === product.id) !== undefined;
+  const isInCart =
+    cartItem?.find((item) => item.id === product.id) !== undefined;
 
   const handleLikedProducts = (e) => {
     e.stopPropagation();
@@ -59,10 +60,10 @@ const ProductCard = ({ product }) => {
         </span>
 
         <span
-          className={`productCard__icons-item ${isLiked ? "liked" : ""} `}
+          className={`productCard__icons-item ${isInCart ? "liked" : ""} `}
           onClick={handleAddToCart}
         >
-          {isLiked ? <HiShoppingBag /> : <HiOutlineShoppingBag />}
+          {isInCart ? <HiShoppingBag /> : <HiOutlineShoppingBag />}
         </span>
       </div>
 
@@ -71,7 +72,7 @@ const ProductCard = ({ product }) => {
           <div className="productCard__title">{product.title}</div>
           <div className="productCard__price">
             <span className="productCard__price-norm">
-              {product.discount_price || product.price}
+              {product.discount_price || product.price}$
             </span>
             {product.discount_price && (
               <span className="productCard__price-discount">

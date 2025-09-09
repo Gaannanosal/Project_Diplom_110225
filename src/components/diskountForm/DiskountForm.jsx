@@ -21,13 +21,13 @@ const DiscountForm = () => {
   );
 
   const {
-    register, 
+    register,
     formState: { errors },
     handleSubmit,
-    watch, 
+    watch,
     reset,
   } = useForm({
-    mode: "onBlur", 
+    mode: "onBlur",
     defaultValues: savedForm,
   });
 
@@ -35,22 +35,20 @@ const DiscountForm = () => {
     const subscription = watch((value) => {
       localStorage.setItem("cart-form-discount", JSON.stringify(value));
     });
-    return () => subscription.unsubscribe(); 
-  }, [watch]); 
+    return () => subscription.unsubscribe();
+  }, [watch]);
   const onSubmit = (data) => {
-    
     reset({
       name: "",
       phone: "",
       email: "",
     });
-    setIsDisabledSend(true); 
+    setIsDisabledSend(true);
     dispatch(sendDiscountRequest(data));
   };
 
   const formValidationErrors = Object.values(errors).map((err) => err.message);
   const hasFormValidationErrors = formValidationErrors.length > 0;
-
 
   return (
     <div className="discount">
