@@ -4,7 +4,7 @@ import { fetchCategories } from "../../store/features/categoriesSlice";
 
 import "../styles/Sections.scss";
 import Category from "./Category";
-import { NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom";
 
 export default function Categories() {
   const dispatch = useDispatch();
@@ -16,22 +16,22 @@ export default function Categories() {
     dispatch(fetchCategories());
   }, [dispatch]);
 
-  // функция, которая выбирает 4 случайных категории
+
   const getRandomCategories = () => {
-     return [...categories]
-      .sort(() => Math.random() - 0.5)
-      .slice(0, 4)
    
+     return [...categories]
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 4)
   };
+
   const randomCategories = getRandomCategories();
 
   if (error) return <p>Error: {error.message}</p>;
   return (
-   
-   
-    <div className='container'>
-      <div className='section'>
-        <div className='section__title'><h2>Categories</h2>
+    <div className="container">
+      <div className="section">
+        <div className="section__title">
+          <h2>Categories</h2>
           <div className="section__linie-wrapper">
             <div className="section__linie"></div>
             <NavLink to="/categories">
@@ -42,10 +42,10 @@ export default function Categories() {
 
         <div className="section__list">
           {randomCategories.length
-          ? randomCategories.map((cat) => {
-              return <Category category={cat} key={cat.id} />;
-            })
-          : loading}
+            ? randomCategories.map((cat) => {
+                return <Category category={cat} key={cat.id} />;
+              })
+            : loading}
         </div>
 
         <div className="section__linie-wrapper-mob">
@@ -53,9 +53,7 @@ export default function Categories() {
             <div className="section__btn-mob">All categories</div>
           </NavLink>
         </div>
-        
       </div>
     </div>
-
   );
 }
