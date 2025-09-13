@@ -5,13 +5,39 @@ import "./Navi.scss";
 import logo from "../../assets/logo.png";
 import { PiSun } from "react-icons/pi";
 import { AiOutlineMoon } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { addProductsToCart } from "../../store/features/cartSlice";
 import { HiMiniHeart } from "react-icons/hi2";
 import { HiOutlineShoppingBag } from "react-icons/hi";
+import { getLikedProducts } from "../../store/features/productsSlice";
 
 export default function Navi() {
-  const { theme, toggleTheme } = useTheme();
-  const likedCount = 0; // заглушки
-  const cartCount = 0;
+  const [isOpen, setIsOpen] = useState(false);
+  const { products, likedProducts } = useSelector((state) => state.products);
+  const { cart } = useSelector((state) => state.cart);
+
+  const [randomProduct, setRandomProduct] = useState(null);
+
+  const dispatch = useDispatch();
+
+  const cartItems = useSelector((state) => state.cart.cart);
+  const productInCart =
+    randomProduct && cartItems.find((item) => item.id === randomProduct.id);
+const { theme, toggleTheme } = useTheme(); 
+  useEffect(() => {
+    const savedProduct = localStorage.getItem("dailyDiscountProduct");
+    if (savedProduct) {
+      const { product, timestamp } = JSON.parse(savedProduct);
+      const now = new Date().getTime();
+
+      if (now - timestamp >= 86400000) {
+        localStorage.removeItem("dailyDiscountProduct");
+      } else {
+        setRandomProduct(product);
+      }
+    }
+  }, []);
 
   return (
     <>
@@ -55,14 +81,16 @@ export default function Navi() {
               <NavLink to="/products/likedProducts">
                 <HiMiniHeart />
               </NavLink>
-              <span className="navi__right-icon-count">{likedCount}</span>
+              <span className="navi__right-icon-count">
+                {likedProducts.length}
+              </span>
             </span>
 
             <span className="navi__right-icon" title="Cart">
               <NavLink to="/cart">
                 <HiOutlineShoppingBag />
               </NavLink>
-              <span className="navi__right-icon-count">{cartCount}</span>
+              <span className="navi__right-icon-count">{cart.length}</span>
             </span>
           </div>
         </div>

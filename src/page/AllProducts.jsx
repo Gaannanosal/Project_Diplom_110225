@@ -11,9 +11,6 @@ const AllProducts = () => {
   const dispatch = useDispatch();
   const { products, loading } = useSelector((state) => state.products);
 
-
-  
-
   const [datas, setDatas] = useState(products);
 
   useEffect(() => {
