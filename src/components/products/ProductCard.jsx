@@ -5,8 +5,10 @@ import { HiOutlineHeart, HiMiniHeart } from "react-icons/hi2";
 import { Link } from "react-router-dom";
 import { HiShoppingBag, HiOutlineShoppingBag } from "react-icons/hi";
 import { addProductsToCart } from "../../store/features/cartSlice";
+
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
+
 
   const { likedProducts } = useSelector((state) => state.products);
   const cartItem = useSelector((state) => state.cart?.cart);
@@ -39,11 +41,13 @@ const ProductCard = ({ product }) => {
             className="productCard__image-el"
             loading="lazy"
           />
-          {product.discount_price && (
+         
+
+          {product.discont_price && (
             <div className="productCard__percentage">
               -
               {Math.round(
-                ((product.price - product.discount_price) / product.price) * 100
+                ((product.price - product.discont_price) / product.price) * 100
               )}
               %
             </div>

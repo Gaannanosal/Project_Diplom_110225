@@ -1,6 +1,6 @@
 import "./App.scss";
 import { Routes, Route, Outlet } from "react-router-dom";
-
+import ProductPage from './page/productPage/ProductPage.jsx'
 import Navi from "./components/header/Navi.jsx";
 import Header from "./components/header/Header.jsx";
 import Footer from "./components/Footer/Footer.jsx";
@@ -11,6 +11,8 @@ import AllSales from "./page/AllSales.jsx";
 import AllProducts from "./page/AllProducts.jsx";
 import CategoryProduct from "./page/CategoryProduct.jsx";
 import AllCategories from "./page/Categories.jsx";
+import Cart from "./page/Cart/Cart.jsx"
+import useScrollToTop from "./hooks/useScrollToTop.js";
 
 function Layout() {
   return (
@@ -34,6 +36,7 @@ function HomePage() {
 }
 
 export default function App() {
+  useScrollToTop()
   return (
     <Routes>
       <Route element={<Layout />}>
@@ -41,6 +44,8 @@ export default function App() {
         <Route path="/sales" element={<AllSales />} />
         <Route path="/products" element={<AllProducts />} />
         <Route path="/categories" element={<AllCategories />} />
+        <Route path="/product/:id" element={<ProductPage />} />
+        <Route path='cart' element={<Cart />}/>
         <Route
           path="categoriesProduct/:categoryId"
           element={<CategoryProduct />}

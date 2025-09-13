@@ -22,7 +22,7 @@ export default function Sale() {
   }, [products]);
 
   return (
-    <section className="sale">
+    <section className="container sale">
       <div className="sale-header">
         <h2 className="sale-title">Sale</h2>
 
