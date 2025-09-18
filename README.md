@@ -1,12 +1,49 @@
-# React + Vite
+###  «Garden Products» Интернет-магазин для дома и сада .
+ ## О проекте
+Интернет-магазин товаров для дома и сада.
+Реализован удобный интерфейс для просмотра товаров, фильтрации, сортировки, добавления в корзину и оформления заказа.
+## Технологии
+React
+Redux Toolkit
+React Router
+SCSS
+React Hook Form
+Local Storage
+## Основной функционал
+--Главная страница: категории, форма на скидку, товары со скидкой
+--Категории: список и переход к товарам
+--Товары: фильтрация и сортировка
+--Корзина: добавление, удаление, изменение количества, расчет стоимости
+--Дополнительно: модальное окно «Товар дня», тёмная тема, скелетон загрузки, адаптивность
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Установка и запуск 
+git clone https://github.com/annanosal/Project_Diplom_110225.git
+cd Project_Diplom_110225
+npm install
+npm run dev
 
-Currently, two official plugins are available:
+## Структура проэкта 
+src/
+ ┣ components/    # Компоненты React
+ ┣ pages/         # Страницы приложения
+ ┣ store/         # Redux store
+ ┣ hooks/         # Кастомные хуки
+ ┣ styles/        # Стили
+ ┗ main.jsx       # Точка входа
+## API:
+Фронтенд получает данные с backend-сервера:  
+[https://telran-project-backend-rrj8.onrender.com](https://telran-project-backend-rrj8.onrender.com)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Основные эндпоинты:
+- GET /products — список всех товаров  
+- GET /categories — список категорий товаров  
+- GET /products?category=ID — товары по категории  
+- GET /products?discount=true — товары со скидкой  
+- GET /cart — содержимое корзины  
+- POST /cart — добавить товар в корзину  
+- PATCH /cart/:id — изменить количество товара в корзине  
+- DELETE /cart/:id — удалить товар из корзины
 
-## Expanding the ESLint configuration
+## Автор
+Ganna Nosal
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
