@@ -17,7 +17,7 @@ Local Storage
 --Дополнительно: модальное окно «Товар дня», тёмная тема, скелетон загрузки, адаптивность
 
 ## Установка и запуск 
-git clone https://github.com/annanosal/Project_Diplom_110225.git
+git clone https://github.com/Gaannanosal/Project_Diplom_110225.git
 cd Project_Diplom_110225
 npm install
 npm run dev
